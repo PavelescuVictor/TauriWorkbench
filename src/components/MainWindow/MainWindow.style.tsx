@@ -4,7 +4,13 @@ interface IStyledMainWindow {}
 
 const StyledMainWindow = styled.div<IStyledMainWindow>`
   ${(props) => {
-    return css``;
+    return css`
+      background: green;
+      width: 100px;
+      height: 100px;
+      width: fit-content;
+      height: fit-content;
+    `;
   }}
 `;
 

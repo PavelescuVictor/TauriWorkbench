@@ -2,26 +2,37 @@ import { useState } from 'react';
 import { WebviewWindow } from '@tauri-apps/api/window';
 import StyledMainWindow from './MainWindow.style';
 
+const windowOptions = {
+  center: true,
+  width: 600,
+  height: 600,
+};
+
 const MainWindow = () => {
   const [windowId, setWindowId] = useState<WebviewWindow>();
   console.log(windowId);
 
   const createWindow = () => {
-    const webview = new WebviewWindow('theUniqueLabel', {
-      url: 'path/to/page.html',
-    });
+    const webview = new WebviewWindow('theUniqueLabel', windowOptions);
     webview.once('tauri://created', function () {
       console.log('Successfully created a new window');
       setWindowId(webview);
     });
     webview.once('tauri://error', function (e) {
+      console.log(e);
       throw new Error('Error while creating a new window');
     });
   };
 
-  const closeWindow = () => {};
-  const minimizeWindow = () => {};
-  const fullscreenWindow = () => {};
+  const closeWindow = () => {
+    windowId?.close();
+  };
+  const minimizeWindow = () => {
+    windowId?.minimize();
+  };
+  const fullscreenWindow = () => {
+    windowId?.toggleMaximize();
+  };
 
   return (
     <StyledMainWindow>

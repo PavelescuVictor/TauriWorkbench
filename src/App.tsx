@@ -2,11 +2,7 @@ import { Titlebar, MainWindow } from './components';
 import './App.css';
 
 function App() {
-  return (
-    <Titlebar>
-      <MainWindow />
-    </Titlebar>
-  );
+  return <MainWindow />;
 }
 
 export default App;

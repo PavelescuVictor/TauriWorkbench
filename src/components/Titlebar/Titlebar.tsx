@@ -5,14 +5,8 @@ interface ITitlebar {
 }
 
 const Titlebar = ({ children }: ITitlebar): JSX.Element => {
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    const name = 'Something';
-    await invoke('greet', { name });
-  }
-
   return (
-    <div className="container">
+    <>
       <div data-tauri-drag-region className="titlebar">
         <div className="titlebar-button" id="titlebar-minimize">
           <img
@@ -31,7 +25,7 @@ const Titlebar = ({ children }: ITitlebar): JSX.Element => {
         </div>
       </div>
       {children}
-    </div>
+    </>
   );
 };
 
